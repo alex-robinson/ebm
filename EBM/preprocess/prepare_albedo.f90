@@ -115,8 +115,8 @@
       retval = nf_def_dim(ncid, REC_NAME, NF_UNLIMITED, rec_dimid)
   
 !     Define the coordinate variables
-      retval = nf_def_var(ncid, LAT_NAME, NF_REAL, 1, lat_dimid, lat_varid)
-      retval = nf_def_var(ncid, LON_NAME, NF_REAL, 1, lon_dimid, lon_varid)
+      retval = nf_def_var(ncid, LAT_NAME, NF_REAL, 1, [lat_dimid], lat_varid)
+      retval = nf_def_var(ncid, LON_NAME, NF_REAL, 1, [lon_dimid], lon_varid)
 
 !     Assign units attributes to coordinate variables.
       retval = nf_put_att_text(ncid, lat_varid, UNITS, len(LAT_UNITS), LAT_UNITS)

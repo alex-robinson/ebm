@@ -79,13 +79,15 @@
 !     Create the file. 
       retval = nf_create(FILE_NAME, nf_clobber, ncid)
 
+      write(*,*) "retval: ", retval 
+
 !     Define the dimensions
       retval = nf_def_dim(ncid, LAT_NAME, NLATS, lat_dimid)
       retval = nf_def_dim(ncid, LON_NAME, NLONS, lon_dimid)
   
 !     Define the coordinate variables
-      retval = nf_def_var(ncid, LAT_NAME, NF_REAL, 1, lat_dimid, lat_varid)
-      retval = nf_def_var(ncid, LON_NAME, NF_REAL, 1, lon_dimid, lon_varid)
+      retval = nf_def_var(ncid, LAT_NAME, NF_REAL, 1, [lat_dimid], lat_varid)
+      retval = nf_def_var(ncid, LON_NAME, NF_REAL, 1, [lon_dimid], lon_varid)
 
 !     Assign units attributes to coordinate variables.
       retval = nf_put_att_text(ncid, lat_varid, UNITS, len(LAT_UNITS), LAT_UNITS)
